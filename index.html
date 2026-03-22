@@ -3,21 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BalaJi Tour and Travels | Taxi Service in Firozabad, Agra</title>
-<meta name="description" content="BalaJi Tour And Travels - Vehicle Rentals for Tours, Trips, Outstation Services.">
-<meta name="keywords" content="Taxi in Firozabad, Car Rental Agra, Outstation Taxi, BalaJi Travels">
+<title>BalaJi Tour and Travels</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
-body{background:#f5f5f5;color:#111;scroll-behavior:smooth;}
-a{text-decoration:none;color:inherit;}
 
-header{position:fixed;top:0;left:0;width:100%;background:#0d47a1;color:#fff;z-index:1000;}
-.nav-container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:15px;}
-.nav-links{display:flex;gap:20px;}
+:root{
+--bg:#f5f5f5;
+--text:#111;
+--primary:#0d47a1;
+--card:#ffffff;
+}
+
+body.dark{
+--bg:#121212;
+--text:#fff;
+--primary:#1e88e5;
+--card:#1e1e1e;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+
+body{
+background:var(--bg);
+color:var(--text);
+scroll-behavior:smooth;
+transition:0.3s;
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:var(--primary);
+color:#fff;
+z-index:1000;
+}
+
+.nav-container{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+}
+
+.nav-links{
+display:flex;
+gap:20px;
+}
+
 .nav-links a:hover{color:#ffeb3b;}
+
+.toggle-btn{
+cursor:pointer;
+font-size:18px;
+}
 
 #hero{
 height:90vh;
@@ -41,22 +84,82 @@ color:#fff;
 cursor:pointer;
 }
 
-#services,#vehicles,#contact{padding:60px 20px;}
-h2{text-align:center;color:#0d47a1;margin-bottom:30px;}
+section{padding:60px 20px;}
 
-.services-container{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
-.service-card{background:#e3f2fd;padding:20px;border-radius:8px;width:250px;text-align:center;}
+h2{text-align:center;color:var(--primary);margin-bottom:30px;}
 
-.vehicle-slider{display:flex;gap:20px;overflow:auto;}
-.vehicle-card{background:#fff;border-radius:8px;width:250px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
-.vehicle-card img{width:100%;height:150px;object-fit:cover;}
+.services-container{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
+}
+
+.service-card{
+background:#e3f2fd;
+padding:20px;
+border-radius:8px;
+width:250px;
+text-align:center;
+}
+
+body.dark .service-card{
+background:#2a2a2a;
+}
+
+.slider-wrapper{
+position:relative;
+display:flex;
+align-items:center;
+}
+
+.slider-btn{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:var(--primary);
+color:#fff;
+border:none;
+width:40px;
+height:40px;
+border-radius:50%;
+cursor:pointer;
+z-index:2;
+}
+
+.slider-btn.left{left:-10px;}
+.slider-btn.right{right:-10px;}
+
+.vehicle-slider{
+display:flex;
+gap:20px;
+overflow-x:auto;
+scroll-behavior:smooth;
+padding:10px;
+}
+
+.vehicle-slider::-webkit-scrollbar{display:none;}
+
+.vehicle-card{
+background:var(--card);
+border-radius:8px;
+width:250px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.vehicle-card img{
+width:100%;
+height:150px;
+object-fit:cover;
+}
+
 .vehicle-info{padding:15px;}
 
-button.book-btn{
+.book-btn{
 margin-top:10px;
 padding:10px;
 width:100%;
-background:#0d47a1;
+background:var(--primary);
 color:#fff;
 border:none;
 border-radius:5px;
@@ -64,8 +167,55 @@ cursor:pointer;
 }
 
 .contact-form{max-width:500px;margin:auto;}
-.contact-form input,.contact-form textarea{
-width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:5px;
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.whatsapp-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#25d366,#128c7e);
+color:#fff;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+position:relative;
+overflow:hidden;
+transition:0.3s;
+}
+
+.whatsapp-btn::before{
+content:"";
+position:absolute;
+width:300%;
+height:300%;
+background:rgba(255,255,255,0.2);
+top:-100%;
+left:-100%;
+transform:rotate(45deg);
+transition:0.5s;
+}
+
+.whatsapp-btn:hover::before{
+top:100%;
+left:100%;
+}
+
+.whatsapp-btn:hover{
+transform:scale(1.05);
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
 .fixed-buttons{
@@ -78,7 +228,8 @@ gap:10px;
 }
 
 .fixed-buttons a{
-width:50px;height:50px;
+width:50px;
+height:50px;
 background:#25d366;
 border-radius:50%;
 display:flex;
@@ -92,16 +243,17 @@ font-size:22px;
 position:fixed;
 bottom:20px;
 left:20px;
-background:#0d47a1;
+background:var(--primary);
 color:#fff;
 padding:12px 20px;
 border-radius:30px;
 }
 
 @media(max-width:768px){
-.nav-links{display:none;flex-direction:column;background:#0d47a1;position:absolute;top:60px;right:0;padding:10px;}
+.nav-links{display:none;flex-direction:column;background:var(--primary);position:absolute;top:60px;right:0;padding:10px;}
 .nav-links.show{display:flex;}
 }
+
 </style>
 </head>
 
@@ -110,7 +262,12 @@ border-radius:30px;
 <header>
 <div class="nav-container">
 <div>BalaJi Tours</div>
+
+<div style="display:flex;gap:15px;align-items:center;">
+<div class="toggle-btn" onclick="toggleTheme()">🌙</div>
 <div onclick="toggleNav()">☰</div>
+</div>
+
 <div class="nav-links" id="navLinks">
 <a href="#hero">Home</a>
 <a href="#services">Services</a>
@@ -128,68 +285,54 @@ border-radius:30px;
 </div>
 </section>
 
-<section style="padding:40px;text-align:center;background:#fff;">
-<h2>Why Choose Us?</h2>
-<p>✔ 20+ Years Experience | ✔ 50+ Vehicles | ✔ Trusted by 1000+ Customers</p>
-</section>
-
-<section id="services">
+<section>
 <h2>Our Services</h2>
 <div class="services-container">
-<div class="service-card"><h3>🚖 Local Trips</h3></div>
-<div class="service-card"><h3>🌍 Outstation Trips</h3></div>
-<div class="service-card"><h3>✈ Airport Pickup</h3></div>
-<div class="service-card"><h3>💍 Weddings</h3></div>
+<div class="service-card">🚖 Local Trips</div>
+<div class="service-card">🌍 Outstation Trips</div>
+<div class="service-card">✈ Airport Pickup</div>
+<div class="service-card">💍 Weddings</div>
 </div>
 </section>
 
 <section id="vehicles">
 <h2>Our Vehicles</h2>
-<div class="vehicle-slider">
 
-<div class="vehicle-card">
-<img loading="lazy" src="https://via.placeholder.com/300x150" />
-<div class="vehicle-info">
-<h4>Maruti Ecco</h4>
-<p>₹10/km</p>
-<button class="book-btn" onclick="bookVehicle('Ecco')">Book Now</button>
-</div>
-</div>
+<div class="slider-wrapper">
+<button class="slider-btn left" onclick="scrollVehicles(-1)">❮</button>
 
-<div class="vehicle-card">
-<img loading="lazy" src="https://via.placeholder.com/300x150" />
-<div class="vehicle-info">
-<h4>Toyota Innova</h4>
-<p>₹15/km</p>
-<button class="book-btn" onclick="bookVehicle('Innova')">Book Now</button>
-</div>
-</div>
+<div class="vehicle-slider" id="vehicleSlider">
+
+<div class="vehicle-card"><img src="https://via.placeholder.com/300x150"><div class="vehicle-info"><h4>Ecco</h4><p>₹10/km</p><button class="book-btn" onclick="bookVehicle('Ecco')">Book Now</button></div></div>
+
+<div class="vehicle-card"><img src="https://via.placeholder.com/300x150"><div class="vehicle-info"><h4>Innova</h4><p>₹15/km</p><button class="book-btn" onclick="bookVehicle('Innova')">Book Now</button></div></div>
+
+<div class="vehicle-card"><img src="https://via.placeholder.com/300x150"><div class="vehicle-info"><h4>Dzire</h4><p>₹11/km</p><button class="book-btn" onclick="bookVehicle('Dzire')">Book Now</button></div></div>
+
+<div class="vehicle-card"><img src="https://via.placeholder.com/300x150"><div class="vehicle-info"><h4>Traveller</h4><p>₹18/km</p><button class="book-btn" onclick="bookVehicle('Traveller')">Book Now</button></div></div>
+
+<div class="vehicle-card"><img src="https://via.placeholder.com/300x150"><div class="vehicle-info"><h4>Scorpio</h4><p>₹16/km</p><button class="book-btn" onclick="bookVehicle('Scorpio')">Book Now</button></div></div>
 
 </div>
-</section>
 
-<section style="background:#e3f2fd;text-align:center;padding:50px;">
-<h2>Customer Reviews</h2>
-<p>"Best service in Firozabad!" ⭐⭐⭐⭐⭐</p>
-<p>"Clean cars & polite drivers" ⭐⭐⭐⭐⭐</p>
+<button class="slider-btn right" onclick="scrollVehicles(1)">❯</button>
+</div>
 </section>
 
 <section id="contact">
 <div class="contact-form">
 <h2>Contact Us</h2>
 
-<p style="text-align:center;">
-📞 <a href="tel:+919876543210">+91 9876543210</a><br>
-💬 WhatsApp Available 24/7
-</p>
-
 <form id="contactForm">
 <input type="text" name="name" placeholder="Name" required>
 <input type="tel" name="phone" placeholder="Phone" required>
 <textarea name="message" placeholder="Message"></textarea>
-<button type="submit">Send via WhatsApp</button>
-</form>
 
+<button type="submit" class="whatsapp-btn">
+💬 Send via WhatsApp
+</button>
+
+</form>
 </div>
 </section>
 
@@ -201,18 +344,20 @@ border-radius:30px;
 <a href="https://wa.me/919876543210" class="book-sticky">Book Now</a>
 
 <script>
+
 function toggleNav(){
 document.getElementById('navLinks').classList.toggle('show');
 }
 
-document.querySelectorAll('.nav-links a').forEach(link=>{
-link.addEventListener('click',()=>{
-document.getElementById('navLinks').classList.remove('show');
-});
-});
-
 function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+function scrollVehicles(direction){
+document.getElementById('vehicleSlider').scrollBy({
+left: direction * 300,
+behavior:'smooth'
+});
 }
 
 function bookVehicle(vehicle){
@@ -227,7 +372,18 @@ let phone=this.phone.value;
 let msg=`Hello, Name: ${name}, Phone: ${phone}`;
 window.open(`https://wa.me/919876543210?text=${encodeURIComponent(msg)}`);
 });
+
+/* DARK MODE */
+function toggleTheme(){
+document.body.classList.toggle('dark');
+localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark':'light');
+}
+
+if(localStorage.getItem('theme')==='dark'){
+document.body.classList.add('dark');
+}
+
 </script>
 
 </body>
-</html>
+  </html>
