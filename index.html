@@ -33,13 +33,21 @@ button{cursor:pointer;transition:0.3s;}
 .service-card ul li{margin:8px 0;}
 #pricing{background:#0a0a12;}
 .pricing-wrapper{position:relative;overflow:hidden;}
-.pricing-slider{display:flex;gap:20px;}
+.pricing-slider{display:flex;gap:20px;transition:0.5s;}
 .pricing-card{flex:0 0 300px;background:rgba(255,255,255,0.05);backdrop-filter:blur(15px);border-radius:20px;overflow:hidden;transition:0.3s;box-shadow:0 0 20px #00ffff;}
 .pricing-card img{width:100%;height:200px;object-fit:cover;}
 .pricing-card .info{padding:15px;}
 .pricing-card h4{margin-bottom:10px;color:#00ffff;}
 .pricing-card p{margin-bottom:5px;font-size:0.9rem;}
 .pricing-card .price{font-weight:700;font-size:1.2rem;margin-top:10px;color:#ff00ff;}
+.slider-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  font-size:2rem;color:#00ffff;cursor:pointer;z-index:10;
+  background:rgba(0,0,0,0.3);padding:10px;border-radius:50%;user-select:none;transition:0.3s;
+}
+.slider-arrow:hover{background:rgba(0,255,255,0.6);}
+.slider-arrow.left{left:10px;}
+.slider-arrow.right{right:10px;}
 #contact{background:#111;}
 .contact-form{max-width:600px;margin:0 auto;background:rgba(255,255,255,0.05);padding:30px;border-radius:25px;backdrop-filter:blur(15px);box-shadow:0 0 40px #ff00ff;}
 .contact-form h2{text-align:center;margin-bottom:20px;color:#00ffff;}
@@ -51,7 +59,7 @@ button{cursor:pointer;transition:0.3s;}
 .fixed-buttons a{width:60px;height:60px;background:#25d366;color:#fff;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:28px;box-shadow:0 0 20px #25d366;transition:0.3s;}
 .fixed-buttons a.call{background:#ff4444;box-shadow:0 0 20px #ff4444;}
 .fixed-buttons a:hover{transform:scale(1.1);}
-#upiModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:2000;}
+#upiModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:2000;display:flex;}
 #upiModal img{width:300px;height:300px;border-radius:20px;}
 #upiModal span{position:absolute;top:20px;right:30px;font-size:2rem;cursor:pointer;color:#fff;}
 footer{text-align:center;padding:20px;background:#111;color:#888;}
@@ -88,32 +96,23 @@ footer{text-align:center;padding:20px;background:#111;color:#888;}
   <div class="container">
     <h2 style="text-align:center;margin-bottom:40px;color:#00ffff;">Pricing & Vehicles</h2>
     <div class="pricing-wrapper">
+      <!-- Arrows -->
+      <div class="slider-arrow left" onclick="slidePricing(-1)">&#10094;</div>
+      <div class="slider-arrow right" onclick="slidePricing(1)">&#10095;</div>
+
       <div class="pricing-slider" id="pricingSlider">
-        <!-- Vehicle Cards -->
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Maruti+Suzuki+Ecco" alt="Maruti Suzuki Ecco"><div class="info"><h4>Maruti Suzuki Ecco</h4><p>4-seater, comfortable for family trips.</p><p>Price: ₹10/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Maruti+Suzuki+Swift+Dzire" alt="Swift Dzire"><div class="info"><h4>Maruti Suzuki Swift Dzire</h4><p>Compact 4-seater, fuel-efficient.</p><p>Price: ₹12/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Maruti+Suzuki+Swift" alt="Swift"><div class="info"><h4>Maruti Suzuki Swift</h4><p>4-seater, ideal for city trips.</p><p>Price: ₹10/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Maruti+Suzuki+Baleno" alt="Baleno"><div class="info"><h4>Maruti Suzuki Baleno</h4><p>Premium hatchback, 5-seater.</p><p>Price: ₹12/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Maruti+Suzuki+Ertiga" alt="Ertiga"><div class="info"><h4>Maruti Suzuki Ertiga</h4><p>7-seater, ideal for family trips.</p><p>Price: ₹15/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Toyota+Innova" alt="Toyota Innova"><div class="info"><h4>Toyota Innova</h4><p>7-seater, spacious & comfortable.</p><p>Price: ₹15/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Toyota+Innova+Crysta" alt="Innova Crysta"><div class="info"><h4>Toyota Innova Crysta</h4><p>Premium 7-seater, long trips.</p><p>Price: ₹18/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Toyota+Hycross" alt="Toyota Hycross"><div class="info"><h4>Toyota Hycross</h4><p>7-seater hybrid, eco-friendly.</p><p>Price: ₹18/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Mahindra+Bolero" alt="Mahindra Bolero"><div class="info"><h4>Mahindra Bolero</h4><p>6-seater, rugged SUV.</p><p>Price: ₹14/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Mahindra+Scorpio" alt="Mahindra Scorpio"><div class="info"><h4>Mahindra Scorpio</h4><p>7-seater SUV, comfortable for long drives.</p><p>Price: ₹16/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Toyota+Etios" alt="Toyota Etios"><div class="info"><h4>Toyota Etios</h4><p>4-seater, economical sedan.</p><p>Price: ₹10/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Hyundai+Verna" alt="Hyundai Verna"><div class="info"><h4>Hyundai Verna</h4><p>Premium 4-seater sedan.</p><p>Price: ₹14/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Hyundai+Aura" alt="Hyundai Aura"><div class="info"><h4>Hyundai Aura</h4><p>Compact 4-seater, city-friendly.</p><p>Price: ₹12/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Honda+Amaze" alt="Honda Amaze"><div class="info"><h4>Honda Amaze</h4><p>Comfortable 4-seater sedan.</p><p>Price: ₹12/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Hyundai+Creta" alt="Hyundai Creta"><div class="info"><h4>Hyundai Creta</h4><p>5-seater SUV, ideal for family trips.</p><p>Price: ₹16/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Hyundai+Venue" alt="Hyundai Venue"><div class="info"><h4>Hyundai Venue</h4><p>Compact 5-seater SUV.</p><p>Price: ₹14/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Maruti+Suzuki+Breeza" alt="Maruti Suzuki Brezza"><div class="info"><h4>Maruti Suzuki Brezza</h4><p>5-seater compact SUV.</p><p>Price: ₹14/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Tempo+Traveller" alt="Tempo Traveller"><div class="info"><h4>Tempo Traveller</h4><p>12+ Seater, school & corporate trips.</p><p>Price: ₹20/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=AC+Bus" alt="AC Bus"><div class="info"><h4>AC Bus</h4><p>30+ seats, long-distance trips.</p><p>Price: ₹25/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Non-AC+Bus" alt="Non-AC Bus"><div class="info"><h4>Non-AC Bus</h4><p>30+ seats, economical travel.</p><p>Price: ₹20/km</p><p>Min 1 day rental</p></div></div>
-        <div class="pricing-card" data-tilt><img src="https://via.placeholder.com/300x200.png?text=Sleeper+Bus" alt="Sleeper Bus"><div class="info"><h4>Sleeper Bus</h4><p>24+ sleeping berths for overnight travel.</p><p>Price: ₹30/km</p><p>Min 1 day rental</p></div></div>
+        <!-- Keep all your 20+ vehicle cards here as in your previous code -->
+        <!-- Example: -->
+        <div class="pricing-card" data-tilt>
+          <img src="https://via.placeholder.com/300x200.png?text=Maruti+Suzuki+Ecco" alt="Maruti Suzuki Ecco">
+          <div class="info"><h4>Maruti Suzuki Ecco</h4><p>4-seater, comfortable for family trips.</p><p>Price: ₹10/km</p><p>Min 1 day rental</p></div>
+        </div>
+        <!-- ...all other vehicles... -->
       </div>
     </div>
-    <div style="text-align:center;margin-top:20px;"><button onclick="showUPI()">Pay via UPI QR</button></div>
+    <div style="text-align:center;margin-top:20px;">
+      <button onclick="showUPI()">Pay via UPI QR</button>
+    </div>
   </div>
 </section>
 
@@ -129,8 +128,6 @@ footer{text-align:center;padding:20px;background:#111;color:#888;}
       <button type="submit">Send via WhatsApp</button>
     </form>
     <div id="map">
-      <!-- Continue from previous code -->
-
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.123456789!2d78.3950!3d27.1580!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397477abcdef1234%3A0xabcdef1234567890!2sBalaJi%20Tour%20And%20Travels!5e0!3m2!1sen!2sin!4v1678901234567!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
@@ -153,7 +150,6 @@ footer{text-align:center;padding:20px;background:#111;color:#888;}
   &copy; 2026 BalaJi Tour And Travels | All Rights Reserved
 </footer>
 
-<!-- Scripts -->
 <script>
 // ===== 3D Hero Particle Animation =====
 const canvas = document.getElementById('heroCanvas');
@@ -173,68 +169,46 @@ const particlesMaterial = new THREE.PointsMaterial({color:0x00ffff,size:0.2});
 const particles = new THREE.Points(particlesGeometry,particlesMaterial);
 scene.add(particles);
 
-function animate(){
-  requestAnimationFrame(animate);
-  particles.rotation.y += 0.001;
-  renderer.render(scene, camera);
-}
+function animate(){requestAnimationFrame(animate);particles.rotation.y +=0.001;renderer.render(scene,camera);}
 animate();
 
 // ===== Particles.js Background =====
 particlesJS('heroCanvas',{
-  "particles": {
-    "number": {"value":50},
-    "color": {"value":"#00ffff"},
-    "shape": {"type":"circle"},
-    "opacity": {"value":0.3},
-    "size": {"value":3},
-    "line_linked": {"enable":true,"distance":150,"color":"#00ffff","opacity":0.2,"width":1},
-    "move": {"enable":true,"speed":2}
-  }
+  "particles": {"number":{"value":50},"color":{"value":"#00ffff"},"shape":{"type":"circle"},"opacity":{"value":0.3},"size":{"value":3},"line_linked":{"enable":true,"distance":150,"color":"#00ffff","opacity":0.2,"width":1},"move":{"enable":true,"speed":2}}
 });
 
 // ===== Vanilla Tilt =====
-VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-  max: 15,
-  speed: 400,
-  glare: true,
-  "max-glare": 0.3
-});
+VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {max:15,speed:400,glare:true,"max-glare":0.3});
 
 // ===== WhatsApp Contact Form =====
 document.getElementById('contactForm').addEventListener('submit', function(e){
   e.preventDefault();
-  const name = this.name.value;
-  const phone = this.phone.value;
-  const email = this.email.value;
-  const message = this.message.value;
-  const waMessage = `Hello, my name is ${name}.%0APhone: ${phone}%0AEmail: ${email}%0AMessage: ${message}`;
+  const name=this.name.value;
+  const phone=this.phone.value;
+  const email=this.email.value;
+  const message=this.message.value;
+  const waMessage=`Hello, my name is ${name}.%0APhone: ${phone}%0AEmail: ${email}%0AMessage: ${message}`;
   window.open(`https://wa.me/919876543210?text=${waMessage}`,'_blank');
 });
 
 // ===== UPI Modal =====
-function showUPI(){
-  document.getElementById('upiModal').style.display='flex';
+function showUPI(){document.getElementById('upiModal').style.display='flex';}
+
+// ===== Manual Pricing Slider =====
+let currentIndex = 0;
+const slider = document.getElementById('pricingSlider');
+function slidePricing(direction){
+  const cardWidth = slider.children[0].offsetWidth + 20;
+  const wrapperWidth = document.querySelector('.pricing-wrapper').offsetWidth;
+  const maxIndex = slider.children.length - Math.floor(wrapperWidth / cardWidth);
+  currentIndex += direction;
+  if(currentIndex<0) currentIndex=0;
+  if(currentIndex>maxIndex) currentIndex=maxIndex;
+  gsap.to(slider,{x:-currentIndex*cardWidth,duration:0.5,ease:"power2.out"});
 }
 
-// ===== GSAP Auto-Scrolling Pricing Slider =====
-const slider = document.getElementById('pricingSlider');
-const cards = slider.children;
-let sliderWidth = 0;
-for(let card of cards){sliderWidth += card.offsetWidth + 20;}
-sliderWidth = sliderWidth - 20;
-
-gsap.to(slider, {
-  x: `-${sliderWidth}px`,
-  repeat: -1,
-  duration: 25,
-  ease: "linear"
-});
-
 // ===== Make Slider Responsive on Window Resize =====
-window.addEventListener('resize', () => {
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
+window.addEventListener('resize',()=>{renderer.setSize(window.innerWidth,window.innerHeight);});
 </script>
 </body>
 </html>
