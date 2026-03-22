@@ -4,119 +4,159 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BalaJi Tour And Travels</title>
-<meta name="description" content="BalaJi Tour And Travels - Vehicle Rentals for Tours, Trips, and Outstation Services. 20+ Years Experience, 50+ Vehicles, 50000+ Customers.">
-<meta name="keywords" content="Vehicle Rental, Car Hire, Bus Hire, Tempo Traveller, Local Trips, Outstation Trips, Airport Pickup, BalaJi Tour And Travels">
+<meta name="description" content="BalaJi Tour And Travels - Vehicle Rentals for Tours, Trips, Outstation Services.">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
-body{background:#0f0f1c;color:#fff;overflow-x:hidden;scroll-behavior:smooth;}
+body{background:#f5f5f5;color:#111;scroll-behavior:smooth;}
 a{text-decoration:none;color:inherit;}
-section{padding:80px 50px;}
-.container{max-width:1200px;margin:0 auto;}
-button{cursor:pointer;transition:0.3s;}
-#hero{position:relative;height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;overflow:hidden;}
-#hero canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;}
-.hero-content{position:relative;z-index:2;backdrop-filter:blur(15px);background:rgba(255,255,255,0.05);padding:40px;border-radius:25px;box-shadow:0 0 60px rgba(0,255,255,0.2);}
-.hero-content h1{font-size:3rem;margin-bottom:20px;color:#00ffff;text-shadow:0 0 10px #00ffff;}
+
+/* Header / Nav */
+header{position:fixed;top:0;left:0;width:100%;background:#0d47a1;color:#fff;z-index:1000;box-shadow:0 2px 6px rgba(0,0,0,0.2);}
+.nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:15px 20px;}
+.nav-logo{font-size:1.5rem;font-weight:700;cursor:pointer;}
+.nav-links{display:flex;gap:20px;}
+.nav-links a{color:#fff;font-weight:500;transition:0.3s;}
+.nav-links a:hover{color:#ffeb3b;}
+
+/* Hero */
+#hero{height:90vh;display:flex;justify-content:center;align-items:center;text-align:center;background:#0d47a1;color:#fff;padding-top:70px;}
+.hero-content h1{font-size:3rem;margin-bottom:20px;}
 .hero-content p{font-size:1.2rem;margin-bottom:30px;}
-.hero-buttons button{background:linear-gradient(45deg,#00ffff,#ff00ff);border:none;padding:15px 30px;margin:0 10px;font-weight:600;color:#fff;border-radius:50px;box-shadow:0 0 20px #00ffff;}
-.hero-buttons button:hover{transform:scale(1.05);}
-#services{background:#111;display:flex;flex-wrap:wrap;justify-content:space-around;gap:20px;}
-.service-card{flex:1 1 300px;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);padding:20px;border-radius:20px;text-align:center;transition:0.3s;}
-.service-card:hover{transform:translateY(-10px);box-shadow:0 0 40px #ff00ff;}
-.service-card h3{color:#00ffff;margin-bottom:10px;}
-.service-card ul{list-style:none;}
+.hero-buttons button{margin:0 10px;padding:15px 30px;border:none;border-radius:8px;background:#1565c0;color:#fff;font-weight:600;cursor:pointer;transition:0.3s;}
+.hero-buttons button:hover{background:#0d47a1;}
+
+/* Services */
+#services{padding:60px 20px;background:#fff;}
+#services h2{text-align:center;margin-bottom:40px;color:#0d47a1;}
+.services-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
+.service-card{flex:1 1 250px;background:#e3f2fd;padding:20px;border-radius:8px;text-align:center;transition:0.3s;}
+.service-card:hover{transform:translateY(-5px);}
+.service-card h3{margin-bottom:15px;}
+.service-card ul{list-style:none;padding-left:0;}
 .service-card ul li{margin:8px 0;}
-#pricing{background:#0a0a12;}
-.pricing-wrapper{position:relative;overflow:hidden;}
-.pricing-slider{display:flex;gap:20px;transition:0.5s;}
-.pricing-card{flex:0 0 300px;background:rgba(255,255,255,0.05);backdrop-filter:blur(15px);border-radius:20px;overflow:hidden;transition:0.3s;box-shadow:0 0 20px #00ffff;}
-.pricing-card img{width:100%;height:200px;object-fit:cover;}
-.pricing-card .info{padding:15px;}
-.pricing-card h4{margin-bottom:10px;color:#00ffff;}
-.pricing-card p{margin-bottom:5px;font-size:0.9rem;}
-.pricing-card .price{font-weight:700;font-size:1.2rem;margin-top:10px;color:#ff00ff;}
-.slider-arrow{
-  position:absolute;top:50%;transform:translateY(-50%);
-  font-size:2rem;color:#00ffff;cursor:pointer;z-index:10;
-  background:rgba(0,0,0,0.3);padding:10px;border-radius:50%;user-select:none;transition:0.3s;
-}
-.slider-arrow:hover{background:rgba(0,255,255,0.6);}
+
+/* Vehicles / Pricing */
+#vehicles{padding:60px 20px;background:#f5f5f5;}
+#vehicles h2{text-align:center;margin-bottom:40px;color:#0d47a1;}
+.vehicle-slider-wrapper{position:relative;overflow:hidden;}
+.vehicle-slider{display:flex;gap:20px;transition:0.5s;}
+.vehicle-card{flex:0 0 280px;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);cursor:pointer;}
+.vehicle-card img{width:100%;height:180px;object-fit:cover;}
+.vehicle-info{padding:15px;}
+.vehicle-info h4{margin-bottom:8px;}
+.vehicle-info p{font-size:0.9rem;margin-bottom:5px;}
+.vehicle-info .price{font-weight:700;color:#0d47a1;margin-top:10px;}
+.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:2rem;color:#0d47a1;cursor:pointer;background:#fff;padding:8px;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.2);}
 .slider-arrow.left{left:10px;}
 .slider-arrow.right{right:10px;}
-#contact{background:#111;}
-.contact-form{max-width:600px;margin:0 auto;background:rgba(255,255,255,0.05);padding:30px;border-radius:25px;backdrop-filter:blur(15px);box-shadow:0 0 40px #ff00ff;}
-.contact-form h2{text-align:center;margin-bottom:20px;color:#00ffff;}
-.contact-form input, .contact-form textarea{width:100%;padding:15px;margin:10px 0;border:none;border-radius:10px;background:rgba(255,255,255,0.1);color:#fff;}
-.contact-form button{width:100%;padding:15px;border:none;border-radius:50px;background:linear-gradient(45deg,#00ffff,#ff00ff);color:#fff;font-weight:600;}
-.contact-form button:hover{transform:scale(1.05);}
-#map{margin-top:40px;width:100%;height:300px;border-radius:20px;overflow:hidden;}
+
+/* Contact */
+#contact{padding:60px 20px;background:#fff;}
+.contact-form{max-width:600px;margin:0 auto;}
+.contact-form h2{text-align:center;margin-bottom:20px;color:#0d47a1;}
+.contact-form input,.contact-form textarea{width:100%;padding:15px;margin:10px 0;border:1px solid #ccc;border-radius:5px;}
+.contact-form button{width:100%;padding:15px;border:none;border-radius:8px;background:#0d47a1;color:#fff;font-weight:600;cursor:pointer;transition:0.3s;}
+.contact-form button:hover{background:#1565c0;}
+#map{margin-top:30px;width:100%;height:300px;border-radius:8px;overflow:hidden;}
+
+/* Fixed buttons */
 .fixed-buttons{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:15px;z-index:1000;}
-.fixed-buttons a{width:60px;height:60px;background:#25d366;color:#fff;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:28px;box-shadow:0 0 20px #25d366;transition:0.3s;}
-.fixed-buttons a.call{background:#ff4444;box-shadow:0 0 20px #ff4444;}
-.fixed-buttons a:hover{transform:scale(1.1);}
-#upiModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:2000;display:flex;}
-#upiModal img{width:300px;height:300px;border-radius:20px;}
-#upiModal span{position:absolute;top:20px;right:30px;font-size:2rem;cursor:pointer;color:#fff;}
-footer{text-align:center;padding:20px;background:#111;color:#888;}
+.fixed-buttons a{width:50px;height:50px;background:#25d366;color:#fff;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:24px;}
+.fixed-buttons a.call{background:#ff4444;}
+
+/* Responsive */
+@media(max-width:768px){
+  .nav-links{flex-direction:column;position:absolute;top:60px;right:0;background:#0d47a1;width:200px;padding:15px;display:none;}
+  .nav-links.show{display:flex;}
+  .vehicle-card{flex:0 0 220px;}
+}
+.nav-toggle{display:none;cursor:pointer;font-size:1.5rem;}
+@media(max-width:768px){.nav-toggle{display:block;}}
 </style>
 </head>
 <body>
 
-<!-- Hero Section -->
+<!-- Header / Navigation -->
+<header>
+  <div class="nav-container">
+    <div class="nav-logo">BalaJi Tours</div>
+    <div class="nav-toggle" onclick="toggleNav()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#hero">Home</a>
+      <a href="#services">Services</a>
+      <a href="#vehicles">Vehicles</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
 <section id="hero">
-  <canvas id="heroCanvas"></canvas>
   <div class="hero-content">
     <h1>BalaJi Tour And Travels</h1>
     <p>All Types of Vehicles for Local, Outstation & Special Tours. 20+ Years Experience, 50+ Vehicles.</p>
     <div class="hero-buttons">
-      <button onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Book Now</button>
+      <button onclick="document.getElementById('vehicles').scrollIntoView({behavior:'smooth'})">Book Now</button>
       <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Us</button>
     </div>
   </div>
 </section>
 
-<!-- Services Section -->
+<!-- Services -->
 <section id="services">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:40px;color:#00ffff;">Our Services</h2>
-    <div class="service-card"><h3>Local Trips</h3><ul><li>Firozabad to Agra</li><li>Firozabad to Lion Safari</li><li>Firozabad to Mathura</li></ul></div>
-    <div class="service-card"><h3>Outstation Trips</h3><ul><li>Delhi, Jaipur, Udaipur</li><li>Khatu Shyam, Rishikesh, Haridwar</li><li>Ladhak</li></ul></div>
+  <h2>Our Services</h2>
+  <div class="services-container">
+    <div class="service-card">
+      <h3>Local Trips</h3>
+      <ul>
+        <li>Firozabad to Agra</li>
+        <li>Firozabad to Lion Safari</li>
+        <li>Firozabad to Mathura</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h3>Outstation Trips</h3>
+      <ul>
+        <li>Delhi, Jaipur, Udaipur</li>
+        <li>Khatu Shyam, Rishikesh, Haridwar</li>
+        <li>Ladhak</li>
+      </ul>
+    </div>
     <div class="service-card"><h3>Airport Pickup & Drop</h3></div>
     <div class="service-card"><h3>Co-operative Contract & Weddings</h3></div>
   </div>
 </section>
 
-<!-- Pricing Section -->
-<section id="pricing">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:40px;color:#00ffff;">Pricing & Vehicles</h2>
-    <div class="pricing-wrapper">
-      <!-- Arrows -->
-      <div class="slider-arrow left" onclick="slidePricing(-1)">&#10094;</div>
-      <div class="slider-arrow right" onclick="slidePricing(1)">&#10095;</div>
-
-      <div class="pricing-slider" id="pricingSlider">
-        <!-- Keep all your 20+ vehicle cards here as in your previous code -->
-        <!-- Example: -->
-        <div class="pricing-card" data-tilt>
-          <img src="https://via.placeholder.com/300x200.png?text=Maruti+Suzuki+Ecco" alt="Maruti Suzuki Ecco">
-          <div class="info"><h4>Maruti Suzuki Ecco</h4><p>4-seater, comfortable for family trips.</p><p>Price: ₹10/km</p><p>Min 1 day rental</p></div>
+<!-- Vehicles -->
+<section id="vehicles">
+  <h2>Our Vehicles</h2>
+  <div class="vehicle-slider-wrapper">
+    <div class="slider-arrow left" onclick="slideVehicle(-1)">&#10094;</div>
+    <div class="slider-arrow right" onclick="slideVehicle(1)">&#10095;</div>
+    <div class="vehicle-slider" id="vehicleSlider">
+      <div class="vehicle-card">
+        <img src="https://via.placeholder.com/280x180.png?text=Maruti+Suzuki+Ecco" alt="Maruti Suzuki Ecco">
+        <div class="vehicle-info">
+          <h4>Maruti Suzuki Ecco</h4>
+          <p>4-seater, comfortable</p>
+          <p class="price">₹10/km</p>
         </div>
-        <!-- ...all other vehicles... -->
       </div>
-    </div>
-    <div style="text-align:center;margin-top:20px;">
-      <button onclick="showUPI()">Pay via UPI QR</button>
+      <div class="vehicle-card">
+        <img src="https://via.placeholder.com/280x180.png?text=Toyota+Innova" alt="Toyota Innova">
+        <div class="vehicle-info">
+          <h4>Toyota Innova</h4>
+          <p>7-seater, spacious</p>
+          <p class="price">₹15/km</p>
+        </div>
+      </div>
+      <!-- Add more vehicles here -->
     </div>
   </div>
 </section>
 
-<!-- Contact Section -->
+<!-- Contact -->
 <section id="contact">
   <div class="contact-form">
     <h2>Contact Us</h2>
@@ -133,55 +173,18 @@ footer{text-align:center;padding:20px;background:#111;color:#888;}
   </div>
 </section>
 
-<!-- UPI Modal -->
-<div id="upiModal" onclick="this.style.display='none'">
-  <span>&times;</span>
-  <img src="https://via.placeholder.com/300.png?text=UPI+QR+Code" alt="UPI QR">
-</div>
-
-<!-- Fixed WhatsApp and Call Buttons -->
+<!-- Fixed Buttons -->
 <div class="fixed-buttons">
   <a href="https://wa.me/919876543210" target="_blank">💬</a>
   <a class="call" href="tel:+919876543210">📞</a>
 </div>
 
-<!-- Footer -->
-<footer>
-  &copy; 2026 BalaJi Tour And Travels | All Rights Reserved
-</footer>
-
 <script>
-// ===== 3D Hero Particle Animation =====
-const canvas = document.getElementById('heroCanvas');
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({canvas, alpha:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.z = 5;
+// Toggle mobile nav
+function toggleNav(){document.getElementById('navLinks').classList.toggle('show');}
 
-// Glowing particles
-const particlesGeometry = new THREE.BufferGeometry();
-const particleCount = 500;
-const positions = [];
-for(let i=0;i<particleCount*3;i++){positions.push((Math.random()-0.5)*50);}
-particlesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions,3));
-const particlesMaterial = new THREE.PointsMaterial({color:0x00ffff,size:0.2});
-const particles = new THREE.Points(particlesGeometry,particlesMaterial);
-scene.add(particles);
-
-function animate(){requestAnimationFrame(animate);particles.rotation.y +=0.001;renderer.render(scene,camera);}
-animate();
-
-// ===== Particles.js Background =====
-particlesJS('heroCanvas',{
-  "particles": {"number":{"value":50},"color":{"value":"#00ffff"},"shape":{"type":"circle"},"opacity":{"value":0.3},"size":{"value":3},"line_linked":{"enable":true,"distance":150,"color":"#00ffff","opacity":0.2,"width":1},"move":{"enable":true,"speed":2}}
-});
-
-// ===== Vanilla Tilt =====
-VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {max:15,speed:400,glare:true,"max-glare":0.3});
-
-// ===== WhatsApp Contact Form =====
-document.getElementById('contactForm').addEventListener('submit', function(e){
+// WhatsApp Contact Form
+document.getElementById('contactForm').addEventListener('submit',function(e){
   e.preventDefault();
   const name=this.name.value;
   const phone=this.phone.value;
@@ -191,24 +194,18 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
   window.open(`https://wa.me/919876543210?text=${waMessage}`,'_blank');
 });
 
-// ===== UPI Modal =====
-function showUPI(){document.getElementById('upiModal').style.display='flex';}
-
-// ===== Manual Pricing Slider =====
-let currentIndex = 0;
-const slider = document.getElementById('pricingSlider');
-function slidePricing(direction){
-  const cardWidth = slider.children[0].offsetWidth + 20;
-  const wrapperWidth = document.querySelector('.pricing-wrapper').offsetWidth;
-  const maxIndex = slider.children.length - Math.floor(wrapperWidth / cardWidth);
-  currentIndex += direction;
-  if(currentIndex<0) currentIndex=0;
-  if(currentIndex>maxIndex) currentIndex=maxIndex;
-  gsap.to(slider,{x:-currentIndex*cardWidth,duration:0.5,ease:"power2.out"});
+// Vehicle Slider
+let vehicleIndex=0;
+const vehicleSlider=document.getElementById('vehicleSlider');
+function slideVehicle(direction){
+  const cardWidth=vehicleSlider.children[0].offsetWidth+20;
+  const wrapperWidth=document.querySelector('.vehicle-slider-wrapper').offsetWidth;
+  const maxIndex=vehicleSlider.children.length-Math.floor(wrapperWidth/cardWidth);
+  vehicleIndex+=direction;
+  if(vehicleIndex<0) vehicleIndex=0;
+  if(vehicleIndex>maxIndex) vehicleIndex=maxIndex;
+  vehicleSlider.style.transform=`translateX(${-vehicleIndex*cardWidth}px)`;
 }
-
-// ===== Make Slider Responsive on Window Resize =====
-window.addEventListener('resize',()=>{renderer.setSize(window.innerWidth,window.innerHeight);});
 </script>
 </body>
-</html>
+  </html>
